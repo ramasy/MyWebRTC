@@ -6,10 +6,17 @@
 	</head>
 	<body>
 		<h1>Acceuil</h1>
-
+		<button id="bouton" name="button">Envoyer</button> 
+		<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
 		<script src="/socket.io/socket.io.js"></script>
 		<script>
 			var socket = io.connect('http://localhost:8080')||io.connect('video.sopapa.mg:8000');
+			socket.on('message',function(message){
+				alert(message);
+			});
+			$('#bouton').click(function(){
+				socket.emit('message','je suis connecté');
+			});
 		</script>
 	</body>
 </html>

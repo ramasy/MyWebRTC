@@ -18,6 +18,10 @@ var http_server=http.createServer(app);
 var io = require('socket.io').listen(http_server);
 // refa misy client connecté @le socket server
 io.sockets.on('connection', function (socket) {
-console.log('baka @socketServer:Misy connecté!');
+socket.emit('message','vous êtes connecté');
+socket.on('message', function (message) {
+	console.log("Nandefa message le client"+message);
+	});
 });
+
 http_server.listen(port,ip);
