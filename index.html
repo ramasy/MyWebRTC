@@ -12,14 +12,8 @@
    	session.on("sessionConnected", function(event) {
      var publisher;
 		var targetElement = 'videoDisplayer';
-		publisher = OT.initPublisher(targetElement, null, function(error) {
-		  if (error) {
-		    // The client cannot publish.
-		    // You may want to notify the user.
-		  } else {
-		    console.log('Publisher initialized.');
-		  }
-		});
+	    var publisherProperties = {frameRate: 7,resolution: '320x240'};
+		publisher = OT.initPublisher(targetElement,publisherProperties);
 		session.publish(publisher);
 		alert(event.streams.length);
 		for(var i=0;i<event.streams.length;i++){
